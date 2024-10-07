@@ -1,2 +1,5 @@
 node_modules
 .env
+tailwind.config.js
+styles.css
+input.css
