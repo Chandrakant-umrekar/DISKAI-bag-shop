@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diskai | Home</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+
+<body class="font-sans">
+    <!-- flash message setup start -->
+    <% if(success && success.length> 0) { %>
+        <div class="absolute text-center top-0 left-1/2 px-2 transform -translate-x-1/2 rounded-b-md bg-green-500">
+            <span class="inline-block mt-1 mb-1 text-white">
+                <%= success %>
+            </span>
+        </div>
+        <% } %>
+            <!-- flash message setup end -->
+
+            <!-- navbar -->
+            <nav class="border-b-2 border-zinc-500 flex justify-between items-center">
+                <div class="flex bg-white p-3 items-center justify-center">
+                    <h1 class="font-bolder text-4xl tracking-tight italic">Shop</h1>
+                </div>
+
+                <div class="options pe-9 flex items-center">
+                    <ul class="flex text-zinc-600 gap-5 font-semibold tracking-tight">
+                        <li class="text-black font-bold">Home</li>
+                        <li><a href="/users/cart">Cart</a></li>
+                        <li>My account</li>
+                    </ul>
+                    <form action="/users/logout" class="inline" method="post">
+                        <button type="submit"
+                            class="bg-red-600 px-2 py-1 rounded-2xl font-semibold text-white ms-3">Logout</button>
+                    </form>
+                </div>
+            </nav>
+
+            <div class="w-full h-screen flex pt-3">
+                <!-- Sidebar -->
+                <div class="w-1/4 border-e shadow-lg">
+                    <div class="ms-3">
+
+                        <div class="flex justify-center items-center font-normal tracking-tighter">
+                            <p>Sort by:</p>
+                            <select class="border-2 rounded-md ms-3 border-gray-500">
+                                <option value="">Popular</option>
+                                <option value="">Newest</option>
+                            </select>
+                        </div>
+
+                        <div class="flex flex-col justify-around h-96 tracking-tight font-medium">
+                            <div class="mt-6 ps-10 flex flex-col gap-1 text-zinc-400">
+                                <a href="" class="text-zinc-950">New Collection</a>
+                                <a href="">All Products</a>
+                                <a href="">Discounted Products</a>
+                            </div>
+                            <div class="mt-6 ps-10 flex flex-col">
+                                <p class="text-gray-600">Filter by:</p>
+                                <a href="" class="text-zinc-950">Availability</a>
+                                <a href="" class="text-zinc-400">Discount</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- listed items -->
+                <div class="w-full p-4 overflow-y-scroll mb-5">
+                    <div class="flex flex-wrap">
+                        <% products.forEach((product)=> { %>
+                            <!-- items -->
+                            <div class="h-44 w-36 border-0 m-2 rounded-sm overflow-hidden">
+                                <div class="h-32" style="background-color: <%= product.bgcolor %>">
+                                    <img src="data:image/jpeg;base64,<%= product.image.toString('base64')%>"
+                                        alt="<%= product.name %>" class="w-full h-full object-contain p-1">
+                                </div>
+                                <div class="flex justify-between items-center "
+                                    style="background-color: <%= product.panelcolor %>">
+                                    <div class="ps-1 gap-0 tracking-normal font-semibold"
+                                        style="color: <%= product.textcolor %>">
+                                        <p>
+                                            <%= product.name %>
+                                        </p>
+                                        <p class="text-sm">₹ <%= product.price %>
+                                        </p>
+                                    </div>
+                                    <form action="/users/addtocart/<%= product._id %>" method="post" class="inline">
+                                        <button type="submit"
+                                            class="bg-white rounded-full h-6 w-6 font-bold flex justify-center text-2xl me-1 items-center pb-1">+</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <% }) %>
+
+                    </div>
+                </div>
+
+            </div>
+
+</body>
+
+</html>

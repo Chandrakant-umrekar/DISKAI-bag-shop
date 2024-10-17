@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diskai | Admin panel</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+
+<body class="font-sans">
+    <!-- flash message setup start -->
+    <% if(error && error.length> 0) { %>
+        <div class="absolute text-center top-0 left-1/2 px-2 transform -translate-x-1/2 rounded-b-md bg-red-500">
+            <span class="inline-block mt-1 mb-1 text-white">
+                <%= error %>
+            </span>
+        </div>
+        <% } %>
+            <!-- flash message setup end -->
+            <!-- navbar -->
+            <nav class="border-b-2 border-zinc-500 flex justify-between items-center">
+                <div class="flex bg-white p-3 items-center justify-center">
+                    <h1 class="font-bolder text-3xl tracking-tight italic">Admin Panel</h1>
+                </div>
+
+                <div class="options pe-9">
+                    <ul class="flex text-zinc-600 gap-5 font-semibold tracking-tight">
+                        <li><a href="/shop">Home</a></li>
+                        <li>My account</li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="w-full h-screen flex pt-3">
+                <!-- Sidebar -->
+                <div class="w-1/4 border-e shadow-lg">
+                    <div class="ms-3">
+
+                        <div class="h-96 tracking-tight font-medium">
+                            <div class="mt-6 ps-10 flex flex-col gap-1 text-zinc-400">
+                                <a href="/owners/admin">All Products</a>
+                                <a href="" class="text-zinc-950">Create New Product</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- creating items -->
+                <div class="w-full">
+                    <div class="w-full px-6 border-b-2 py-5">
+                        <h2 class="text-xl tracking-tight font-semibold">Create New Product</h2>
+                    </div>
+                    <div class="w-full px-10 pt-4">
+                        <h3 class="text-xl font-medium tracking-tighter">Product Details</h3>
+                        <!-- image input  -->
+                        <div>
+                            <form autocomplete="off" action="/products/createproduct" method="post"
+                                enctype="multipart/form-data">
+                                <div class="flex pb-2">
+                                    <p class="font-medium tracking-tight p-1">Select Product Image:</p>
+                                    <input type="file" name="image" class="ps-3 bg-gray-200 p-1 rounded-[3px]">
+                                </div>
+                        </div>
+                        <!-- product info input -->
+                        <div class="w-96">
+                            <input type="text" name="name"
+                                class="ps-3 w-full p-1 my-1 bg-gray-200 font-medium rounded-[3px]"
+                                placeholder="Product Name">
+                            <div class="w-full flex justify-between items-center">
+                                <input type="text" name="price"
+                                    class="ps-3 w-44 p-1 my-1 bg-gray-200 font-medium rounded-[3px]"
+                                    placeholder="Product Price">
+                                <input type="text" name="discount"
+                                    class="ps-3 w-44 p-1 my-1 bg-gray-200 font-medium rounded-[3px]"
+                                    placeholder="Discount(%)">
+                            </div>
+                        </div>
+                        <!-- panel details -->
+                        <div class="mt-8">
+                            <h3 class="tracking-tight font-semibold text-xl">Panel Details</h3>
+                            <div class="w-96 flex flex-wrap">
+                                <input type="text" class="ps-3 w-40 mx-1 p-1 my-1 bg-gray-200 font-medium rounded-[3px]"
+                                    placeholder="Background Color" name="bgcolor">
+                                <input type="text" class="ps-3 w-40 mx-1 p-1 my-1 bg-gray-200 font-medium rounded-[3px]"
+                                    placeholder="Panel Color" name="panelcolor">
+                                <input type="text" class="ps-3 w-40 mx-1 p-1 my-1 bg-gray-200 font-medium rounded-[3px]"
+                                    placeholder="Text Color" name="textcolor">
+                            </div>
+                        </div>
+                        <div class="w-full ps-1 mt-2">
+                            <button type="submit" class="bg-blue-500 px-3 py-1 rounded-lg text-white">Create
+                                Product</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+</body>
+
+</html>

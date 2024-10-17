@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diskai | Cart</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+
+<body class="font-sans">
+    <!-- flash message setup start -->
+    <% if(success && success.length> 0) { %>
+        <div class="absolute text-center top-0 left-1/2 px-2 transform -translate-x-1/2 rounded-b-md bg-green-500">
+            <span class="inline-block mt-1 mb-1 text-white">
+                <%= success %>
+            </span>
+        </div>
+        <% } %>
+            <!-- flash message setup end -->
+
+            <!-- navbar -->
+            <nav class="border-b-2 border-zinc-500 flex justify-between items-center">
+                <div class="flex bg-white p-3 items-center justify-center">
+                    <h1 class="font-bolder text-4xl tracking-normal italic">Cart</h1>
+                </div>
+
+                <div class="options pe-9">
+                    <ul class="flex gap-5 text-zinc-600 font-semibold tracking-tight">
+                        <li><a href="/shop">Home</a></li>
+                        <li class="font-bold text-black">Cart</li>
+                        <li>My account</li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="w-full h-screen p-14">
+                <!-- cart items -->
+                <% if (products && products.length) { %>
+                    <% products.forEach((product)=> { %>
+                        <div class="w-full h-56 flex my-4 border-b-2 pb-1">
+                            <!-- img div -->
+                            <div style="background-color: <%=product.bgcolor %>"
+                                class="w-1/5  h-full overflow-hidden rounded-sm">
+                                <div class="w-full h-2/3">
+                                    <img src="data:image/jpeg;base64,<%= product.image.toString('base64')%>"
+                                        alt="<%= product.name %>" class="w-full h-full object-contain">
+                                </div>
+                                <div class="h-full">
+                                    <div style="background-color: <%= product.panelcolor %>"
+                                        class="flex h-1/5 font-medium tracking-tight justify-around items-center">
+                                        <p style="color: <%= product.textcolor %>">
+                                            <%= product.name %>
+                                        </p>
+                                        <div class="flex gap-1">
+                                            <button
+                                                class="decrement rounded-full h-6 w-6 bg-white flex justify-center items-center pb-1">-</button>
+                                            <p class="bg-white h-6 w-6 rounded-md text-sm text-center">1</p>
+                                            <button
+                                                class="increment rounded-full h-6 w-6 bg-white flex justify-center items-center pb-1">+</button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="h-full bg-gray-900 flex justify-between px-5 tracking-tighter font-semibold text-white">
+                                        <p>Net Total</p>
+                                        <% var discount=product.price * product.discount/100 %>
+                                            <p class="font-bold">₹ <%= product.price + 19 - discount %>
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- info div -->
+                            <div class="ps-10">
+                                <h4 class="font-semibold text-xl pb-3">Price Breakdown</h4>
+                                <div class="font-semibold tracking-tighter">
+                                    <table class="border-b ms-2 table-fixed">
+                                        <tr class="py-2">
+                                            <td class="pe-9">Total MRP</td>
+                                            <td>₹ <%= product.price %>
+                                            </td>
+                                        </tr>
+                                        <tr class="py-2">
+                                            <td class="pe-9">Discounted MRP</td>
+                                            <td>
+                                                <%= product.discount || "0" %> %
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Platform Fee</td>
+                                            <td>₹ 19</td>
+                                        </tr>
+                                        <tr class="py-2">
+                                            <td class="pe-9">Shopping Fee</td>
+                                            <td>FREE</td>
+                                        </tr>
+                                    </table>
+                                    <div class="flex mt-2 justify-between items-center">
+                                        <p class="font-medium text-lg tracking-tight text-zinc-800">Total Amount</p>
+                                        <span class="text-green-500 font-bold ">₹
+                                            <%=product.price + 19 - discount%>
+                                        </span>
+                                    </div>
+                                    <button
+                                        class="border-0 mt-1 bg-zinc-900 px-3 py-1 rounded-lg text-white font-normal">Place
+                                        Order</button>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                            <% } else { %>
+                                <p>No products in the cart.</p>
+                                <% } %>
+            </div>
+
+            <script src="/javascripts/userScript.js"></script>
+</body>
+
+</html>

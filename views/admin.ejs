@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diskai | Admin panel</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+
+<body class="font-sans">
+    <!-- flash message setup start -->
+    <% if(success && success.length> 0) { %>
+        <div class="absolute text-center top-0 left-1/2 px-2 transform -translate-x-1/2 rounded-b-md bg-green-500">
+            <span class="inline-block mt-1 mb-1 text-white">
+                <%= success %>
+            </span>
+        </div>
+        <% } %>
+            <!-- flash message setup end -->
+            <!-- navbar -->
+            <nav class="border-b-2 border-zinc-500 flex justify-between items-center">
+                <div class="flex bg-white p-3 items-center justify-center">
+                    <h1 class="font-bolder text-3xl tracking-tight italic">Admin Panel</h1>
+                </div>
+
+                <div class="options pe-9">
+                    <ul class="flex text-zinc-600 gap-5 font-semibold tracking-tight">
+                        <li><a href="/shop">Home</a></li>
+                        <li>My account</li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="w-full h-screen flex pt-3">
+                <!-- Sidebar -->
+                <div class="w-1/4 border-e shadow-lg">
+                    <div class="ms-3">
+
+                        <div class="h-96 tracking-tight font-medium">
+                            <div class="mt-6 ps-10 flex flex-col gap-1 text-zinc-400">
+                                <a href="" class="text-zinc-950">All Products</a>
+                                <a href="/owners/createproduct">Create New Product</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- listed items -->
+                <div class="w-full p-4">
+                    <div class="flex flex-wrap">
+                        <% products.forEach((product)=> { %>
+                            <!-- items -->
+                            <div class="h-44 w-36 border-0 m-2 rounded-sm overflow-hidden">
+                                <div class="h-32" style="background-color: <%= product.bgcolor %>">
+                                    <img src="data:image/jpeg;base64,<%= product.image.toString('base64')%>"
+                                        alt="<%= product.name %>" class="w-full h-full object-contain">
+                                </div>
+                                <div class="flex justify-between items-center "
+                                    style="background-color: <%= product.panelcolor %>">
+                                    <div class="ps-1 gap-0 tracking-normal font-semibold"
+                                        style="color: <%= product.textcolor %>">
+                                        <p>
+                                            <%= product.name %>
+                                        </p>
+                                        <p class="text-sm">₹ <%= product.price %>
+                                        </p>
+                                    </div>
+                                    <button
+                                        class="bg-white rounded-full h-6 w-6 font-bold flex justify-center text-2xl me-1 items-center pb-1">+</button>
+                                </div>
+                            </div>
+                            <% }) %>
+                    </div>
+                </div>
+
+            </div>
+</body>
+
+</html>
