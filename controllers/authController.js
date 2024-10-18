@@ -74,3 +74,32 @@ module.exports.logoutUser = async (req, res) => {
     res.cookie("token", "");
     res.redirect("/");
 }
+
+module.exports.addToCart = async (req, res) => {
+    try {
+        let user = await userModel.findOne({ email: req.user.email });
+        user.cart.push(req.params.productId);
+        await user.save();
+        req.flash("success", "Product added to Cart");
+        res.redirect("/shop")
+    } catch (err) {
+        return res.status(500).send("Internal error: something went wrong");
+    }
+}
+
+module.exports.removeFromCart = async (req, res) => {
+    try {
+        let user = await userModel.findOne({ email: req.user.email });
+        let productIndex = user.cart.findIndex(item => item._id.toString() === req.params.productId);
+        if (productIndex !== -1) {
+            user.cart.splice(productIndex, 1);
+        } else {
+            req.flash("success", "product not found in cart");
+            return res.status(404).redirect("/users/cart");
+        }
+        await user.save();
+        res.redirect("/users/cart");
+    } catch (err) {
+        return res.status(500).send("internal error: something went wrong");
+    }
+}

@@ -95,20 +95,28 @@
                                         </tr>
                                     </table>
                                     <div class="flex mt-2 justify-between items-center">
-                                        <p class="font-medium text-lg tracking-tight text-zinc-800">Total Amount</p>
+                                        <p class="font-medium text-lg tracking-tight text-zinc-800">Total Amount
+                                        </p>
                                         <span class="text-green-500 font-bold ">₹
                                             <%=product.price + 19 - discount%>
                                         </span>
                                     </div>
-                                    <button
-                                        class="border-0 mt-1 bg-zinc-900 px-3 py-1 rounded-lg text-white font-normal">Place
-                                        Order</button>
+                                    <div class=""><button
+                                            class="border-0 mt-1 bg-zinc-900 px-3 py-1 rounded-lg text-white font-normal me-5">Place
+                                            Order</button>
+                                        <form action="/users/removeFromCart/<%= product._id %>" method="post"
+                                            class="inline ms">
+                                            <button type="submit"
+                                                class="text-red-500 bg-slate-100 rounded-lg py-1 px-3 hover:bg-slate-200">Remove</button>
+                                        </form>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                         <% }) %>
                             <% } else { %>
-                                <p>No products in the cart.</p>
+                                <p class="text-xl text-gray-500">No products in the cart.</p>
                                 <% } %>
             </div>
 
