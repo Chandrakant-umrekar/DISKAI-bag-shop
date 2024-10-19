@@ -25,7 +25,7 @@
                     <h1 class="font-bolder text-4xl tracking-tight italic">Shop</h1>
                 </div>
 
-                <div class="options pe-9 flex items-center">
+                <div class="options pe-9 md:flex items-center hidden">
                     <ul class="flex text-zinc-600 gap-5 font-semibold tracking-tight">
                         <li class="text-black font-bold">Home</li>
                         <li><a href="/users/cart">Cart</a></li>
@@ -37,13 +37,14 @@
                         </button>
                     </form>
                 </div>
+                <div class="inline-block md:hidden text-4xl px-3 font-bold">&#8801</div>
             </nav>
 
-            <div class="w-full h-screen flex pt-3">
+            <div class="w-full h-screen md:flex md:pt-3">
                 <!-- Sidebar -->
-                <div class="w-1/4 border-e shadow-lg">
-                    <div class="ms-3">
-                        <div class="flex justify-center items-center font-normal tracking-tighter">
+                <div class="md:w-1/4 sm:w-full border-e shadow-lg">
+                    <div class="md:ms-6 flex justify-between items-center md:p-0 py-1 px-1.5 md:block">
+                        <div class="flex md:justify-center items-center font-normal tracking-tighter">
                             <p>Sort by:</p>
                             <select class="border-2 rounded-md ms-3 border-gray-500">
                                 <option value="">Popular</option>
@@ -51,24 +52,28 @@
                             </select>
                         </div>
 
-                        <div class="flex flex-col justify-around h-96 tracking-tight font-medium">
-                            <div class="mt-6 ps-10 flex flex-col gap-1 text-zinc-400">
+                        <div
+                            class="md:flex md:flex-col justify-around md:h-96 md:py-0 py-1 sm:block tracking-tight font-medium">
+                            <div class="mt-6 ps-10 md:flex flex-col gap-1 text-zinc-400 hidden">
                                 <a href="" class="text-zinc-950">New Collection</a>
                                 <a href="">All Products</a>
                                 <a href="">Discounted Products</a>
                             </div>
-                            <div class="mt-6 ps-10 flex flex-col">
+
+                            <div class="mt-6 ps-10 md:flex flex-col hidden">
                                 <p class="text-gray-600">Filter by:</p>
                                 <a href="" class="text-zinc-950">Availability</a>
                                 <a href="" class="text-zinc-400">Discount</a>
                             </div>
+                            <!--responsiveness -->
+                            <div class="md:hidden rounded-lg px-2 border-yellow-500 border">Filter By</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- listed items -->
                 <div class="w-full p-4 overflow-y-scroll mb-5">
-                    <div class="flex flex-wrap">
+                    <div class="flex flex-wrap justify-center">
                         <% products.forEach((product)=> { %>
                             <!-- items -->
                             <div class="h-44 w-36 border-0 m-2 rounded-sm overflow-hidden">
@@ -96,7 +101,7 @@
                                     </div>
                                     <form action="/users/addtocart/<%= product._id %>" method="post" class="inline">
                                         <button type="submit"
-                                            class="bg-white rounded-full h-6 w-6 font-bold flex justify-center text-2xl me-1 items-center pb-1">
+                                            class="bg-white rounded-full h-6 w-6 font-bold flex justify-center text-2xl me-1 items-center md:pb-1">
                                             +
                                         </button>
                                     </form>
