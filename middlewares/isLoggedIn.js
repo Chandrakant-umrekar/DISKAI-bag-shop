@@ -14,7 +14,6 @@ module.exports = async (req, res, next) => {
         req.user = user;
         next()
     } catch (err) {
-        req.flash("error", "something went wrong.");
-        res.redirect("/")
+        return res.status(500).send("Internal error: something went wrong");
     }
 }

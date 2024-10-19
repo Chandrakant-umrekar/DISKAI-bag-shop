@@ -2,10 +2,10 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Diskai | Home</title>
-    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
 </head>
 
 <body class="font-sans">
@@ -32,8 +32,9 @@
                         <li>My account</li>
                     </ul>
                     <form action="/users/logout" class="inline" method="post">
-                        <button type="submit"
-                            class="bg-red-600 px-2 py-1 rounded-2xl font-semibold text-white ms-3">Logout</button>
+                        <button type="submit" class="bg-red-600 px-2 py-1 rounded-2xl font-semibold text-white ms-3">
+                            Logout
+                        </button>
                     </form>
                 </div>
             </nav>
@@ -42,7 +43,6 @@
                 <!-- Sidebar -->
                 <div class="w-1/4 border-e shadow-lg">
                     <div class="ms-3">
-
                         <div class="flex justify-center items-center font-normal tracking-tighter">
                             <p>Sort by:</p>
                             <select class="border-2 rounded-md ms-3 border-gray-500">
@@ -74,31 +74,38 @@
                             <div class="h-44 w-36 border-0 m-2 rounded-sm overflow-hidden">
                                 <div class="h-32" style="background-color: <%= product.bgcolor %>">
                                     <img src="data:image/jpeg;base64,<%= product.image.toString('base64')%>"
-                                        alt="<%= product.name %>" class="w-full h-full object-contain p-1">
+                                        alt="<%= product.name %>" class="w-full h-full object-contain p-1" />
                                 </div>
-                                <div class="flex justify-between items-center "
+                                <div class="flex justify-between items-center"
                                     style="background-color: <%= product.panelcolor %>">
                                     <div class="ps-1 gap-0 tracking-normal font-semibold"
                                         style="color: <%= product.textcolor %>">
                                         <p>
                                             <%= product.name %>
                                         </p>
-                                        <p class="text-sm">₹ <%= product.price %>
-                                        </p>
+                                        <div class="flex pb-1">
+                                            <p class="text-sm">₹ <%= product.price %>
+                                            </p>
+                                            <% if(product.discount) { %>
+                                                <p
+                                                    class="text-sm bg-gray-100 px-1 ms-3 rounded-full text-black font-semibold">
+                                                    <%= product.discount %>% off
+                                                </p>
+                                                <% } %>
+                                        </div>
                                     </div>
                                     <form action="/users/addtocart/<%= product._id %>" method="post" class="inline">
                                         <button type="submit"
-                                            class="bg-white rounded-full h-6 w-6 font-bold flex justify-center text-2xl me-1 items-center pb-1">+</button>
+                                            class="bg-white rounded-full h-6 w-6 font-bold flex justify-center text-2xl me-1 items-center pb-1">
+                                            +
+                                        </button>
                                     </form>
                                 </div>
                             </div>
                             <% }) %>
-
                     </div>
                 </div>
-
             </div>
-
 </body>
 
 </html>
