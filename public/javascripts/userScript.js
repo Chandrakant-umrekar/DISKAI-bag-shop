@@ -27,4 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
     })
+
+    // logout confirmation pop-up
+    const logoutBtn = document.querySelector("#logout-btn");
+    const popUp = document.querySelector("#logout-popup");
+
+    logoutBtn.addEventListener("click", () => {
+        popUp.classList.remove("hidden");
+    })
 })
+

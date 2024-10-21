@@ -32,13 +32,14 @@
                 </div>
             </nav>
 
-            <div class="w-full h-screen flex pt-3">
+            <div class="w-full h-screen md:flex md:pt-3">
                 <!-- Sidebar -->
-                <div class="w-1/4 border-e shadow-lg">
+                <div class="md:w-1/4 w-full border-e shadow-lg">
                     <div class="ms-3">
 
-                        <div class="h-96 tracking-tight font-medium">
-                            <div class="mt-6 ps-10 flex flex-col gap-1 text-zinc-400">
+                        <div class="md:h-96 tracking-tight font-medium">
+                            <div
+                                class="md:mt-6 md:ps-10 md:justify-normal md:px-0 px-8 md:py-3 py-1 justify-between flex md:flex-col gap-1 text-zinc-400 ">
                                 <a href="" class="text-zinc-950">All Products</a>
                                 <a href="/owners/createproduct">Create New Product</a>
                             </div>
@@ -49,7 +50,7 @@
 
                 <!-- listed items -->
                 <div class="w-full p-4">
-                    <div class="flex flex-wrap">
+                    <div class="flex flex-wrap md:justify-normal justify-center">
                         <% products.forEach((product)=> { %>
                             <!-- items -->
                             <div class="h-44 w-36 border-0 m-2 rounded-sm overflow-hidden">
@@ -57,18 +58,21 @@
                                     <img src="data:image/jpeg;base64,<%= product.image.toString('base64')%>"
                                         alt="<%= product.name %>" class="w-full h-full object-contain">
                                 </div>
-                                <div class="flex justify-between items-center "
-                                    style="background-color: <%= product.panelcolor %>">
+                                <div class="flex justify-between" style="background-color: <%= product.panelcolor %>">
                                     <div class="ps-1 gap-0 tracking-normal font-semibold"
                                         style="color: <%= product.textcolor %>">
                                         <p>
                                             <%= product.name %>
                                         </p>
-                                        <p class="text-sm">₹ <%= product.price %>
+                                        <p class="text-sm pb-1">₹ <%= product.price %>
                                         </p>
                                     </div>
-                                    <button
-                                        class="bg-white rounded-full h-6 w-6 font-bold flex justify-center text-2xl me-1 items-center pb-1">+</button>
+                                    <div class="pe-1 flex items-end">
+                                        <form action="/products/remove/<%= product._id %>" method="post" class="inline">
+                                            <button
+                                                class="text-white bg-red-600 rounded-md text-sm cursor-pointer px-1 mb-1 py-0.5">remove</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                             <% }) %>

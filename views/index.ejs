@@ -12,8 +12,11 @@
 
     <div class="logo flex justify-between px-2">
         <h1 class="font-bolder font-serif text-2xl">ĐISKAI</h1>
-        <a href="/shop"
-            class="font-semibold py-1 px-3 me-3 mt-2 rounded-2xl bg-slate-950 hover:bg-slate-700 text-white">Shop</a>
+        <div class="my-auto pt-2">
+            <a href="/owners/login" class="text-white bg-black rounded-2xl px-3 py-1 font-medium">owners-login</a>
+            <a href="/shop"
+                class="font-semibold py-1 px-3 me-3 mt-2 rounded-2xl bg-slate-950 hover:bg-slate-700 text-white">Shop</a>
+        </div>
     </div>
     <!-- flash message setup start -->
     <% if(error && error.length> 0) { %>
