@@ -32,13 +32,14 @@
                 </div>
             </nav>
 
-            <div class="w-full h-screen flex pt-3">
+            <div class="w-full h-screen md:flex md:pt-3">
                 <!-- Sidebar -->
-                <div class="w-1/4 border-e shadow-lg">
+                <div class="md:w-1/4 w-full border-e shadow-lg">
                     <div class="ms-3">
 
-                        <div class="h-96 tracking-tight font-medium">
-                            <div class="mt-6 ps-10 flex flex-col gap-1 text-zinc-400">
+                        <div class="md:h-96 tracking-tight font-medium">
+                            <div
+                                class="md:mt-6 md:ps-10 flex md:flex-col md:justify-normal md:py-0 py-1 justify-between md:px-0 px-2 gap-1 text-zinc-400">
                                 <a href="/owners/admin">All Products</a>
                                 <a href="" class="text-zinc-950">Create New Product</a>
                             </div>
@@ -51,7 +52,7 @@
                     <div class="w-full px-6 border-b-2 py-5">
                         <h2 class="text-xl tracking-tight font-semibold">Create New Product</h2>
                     </div>
-                    <div class="w-full px-10 pt-4">
+                    <div class="w-full md:px-10 px-3 pt-4">
                         <h3 class="text-xl font-medium tracking-tighter">Product Details</h3>
                         <!-- image input  -->
                         <div>
@@ -63,11 +64,11 @@
                                 </div>
                         </div>
                         <!-- product info input -->
-                        <div class="w-96">
+                        <div class="md:w-96 w-80">
                             <input type="text" name="name"
                                 class="ps-3 w-full p-1 my-1 bg-gray-200 font-medium rounded-[3px]"
                                 placeholder="Product Name">
-                            <div class="w-full flex justify-between items-center">
+                            <div class="w-full flex justify-between items-center gap-3">
                                 <input type="text" name="price"
                                     class="ps-3 w-44 p-1 my-1 bg-gray-200 font-medium rounded-[3px]"
                                     placeholder="Product Price">
@@ -78,7 +79,8 @@
                         </div>
                         <!-- panel details -->
                         <div class="mt-8">
-                            <h3 class="tracking-tight font-semibold text-xl">Panel Details</h3>
+                            <h3 class="tracking-tight font-semibold text-xl">Panel Details <span
+                                    class="text-gray-600 text-lg">(Optional)</span></h3>
                             <div class="w-96 flex flex-wrap">
                                 <input type="text" class="ps-3 w-40 mx-1 p-1 my-1 bg-gray-200 font-medium rounded-[3px]"
                                     placeholder="Background Color" name="bgcolor">

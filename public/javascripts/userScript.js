@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const incrementButtons = document.querySelectorAll(".increment");
     const decrementButtons = document.querySelectorAll(".decrement");
+    const logoutBtn = document.querySelector("#logout-btn");
+    const logoutPopUp = document.querySelector("#logout-popup");
     // for increment
     incrementButtons.forEach((button) => {
         button.addEventListener('click', function () {
@@ -29,11 +31,11 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     // logout confirmation pop-up
-    const logoutBtn = document.querySelector("#logout-btn");
-    const popUp = document.querySelector("#logout-popup");
-
-    logoutBtn.addEventListener("click", () => {
-        popUp.classList.remove("hidden");
-    })
+    function popUpBuilder(btn, viewEl) {
+        btn.addEventListener("click", () => {
+            viewEl.classList.remove("hidden");
+        })
+    }
+    popUpBuilder(logoutBtn, logoutPopUp);
 })
 
