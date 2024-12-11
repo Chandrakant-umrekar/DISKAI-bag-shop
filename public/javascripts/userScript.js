@@ -1,9 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
 
     const incrementButtons = document.querySelectorAll(".increment");
     const decrementButtons = document.querySelectorAll(".decrement");
     const logoutBtn = document.querySelector("#logout-btn");
     const logoutPopUp = document.querySelector("#logout-popup");
+    const meunBtn = document.querySelector("#menu-btn");
+    const menuDropdown = document.querySelector("#menu-dropdown");
     // for increment
     incrementButtons.forEach((button) => {
         button.addEventListener('click', function () {
@@ -35,7 +37,9 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.addEventListener("click", () => {
             viewEl.classList.remove("hidden");
         })
-    }
-    popUpBuilder(logoutBtn, logoutPopUp);
-})
 
+    }
+
+    popUpBuilder(logoutBtn, logoutPopUp);
+    popUpBuilder(meunBtn, menuDropdown);
+})

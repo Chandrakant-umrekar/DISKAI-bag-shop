@@ -11,6 +11,12 @@ router.get("/cart", isLoggedIn, async (req, res) => {
     res.render("cart", { products, success })
 });
 
+router.get("/account", isLoggedIn, async (req, res) => {
+    const user = await userModel.findOne({ email: req.user.email });
+    const success = req.flash("success");
+    res.render("my-account", { user, success });
+});
+
 
 router.post("/addtocart/:productId", isLoggedIn, addToCart)
 

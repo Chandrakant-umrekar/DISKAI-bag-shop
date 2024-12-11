@@ -16,8 +16,7 @@ const userSchema = mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "product"
     }],
-    contact: Number,
-    picture: String,
+    picture: Buffer,
 });
 
 module.exports = mongoose.model("user", userSchema);

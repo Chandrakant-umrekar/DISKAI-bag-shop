@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diskai | Cart</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+
+<body class="font-sans">
+    <!-- flash message setup start -->
+    <% if(success && success.length> 0) { %>
+        <div class="absolute text-center top-0 left-1/2 px-2 transform -translate-x-1/2 rounded-b-md bg-green-500">
+            <span class="inline-block mt-1 mb-1 text-white">
+                <%= success %>
+            </span>
+        </div>
+        <% } %>
+            <!-- flash message setup end -->
+
+            <!-- navbar -->
+            <nav class="border-b-2 border-zinc-500 flex justify-between items-center p-2 pr-5">
+                <div class="flex bg-white p-3 items-center justify-center">
+                    <h1 class="font-bold text-3xl md:text-4xl tracking-normal italic">Cart</h1>
+                </div>
+                <div class="options text-lg">
+                    <ul class="flex gap-5 text-zinc-600 font-semibold tracking-tight">
+                        <li><a href="/shop">Home</a></li>
+                        <li><a href="/users/cart">Cart</a></li>
+                        <li class="font-bold text-black">My account</li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="w-full h-full"> <!--wrapper -->
+                <div class="w-full h-56 bg-lime-200 flex items-center px-20"> <!-- upper -->
+
+                    <div class="p-3"> <!-- profile img -->
+                        <div class="bg-red-400 w-32 h-32 overflow-hidden rounded-lg">
+                            <img src="/images/vr.jpg" alt="profile pic" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="flex "> <!-- info -->
+                        <div class="flex flex-col ">
+                            <h1 class="text-xl">Chandrakant Umrekar</h1>
+                            <button type="button"
+                                class="bg-slate-800 text-white rounded-lg focus:outline-none hover:ring-2 hover:ring-gray-300">Edit
+                                profile</button>
+                        </div>
+                        <div class="">
+                            <h1 class="">Chandrakant Umrekar</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=""> <!-- lower -->
+
+                </div>
+            </div>
+
+            <script src="/javascripts/userScript.js"></script>
+</body>
+
+</html>
