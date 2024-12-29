@@ -47,4 +47,5 @@
 
 ##Overview : 
 ![Image1](./public/pageImages/diskai-pic.png)
-![Image2](./public/pageImages/Screenshot2024-10-14132315.png)
+![Image2](./public/pageImages/image2.png)
+![Image3](./public/pageImages/image3.png)
