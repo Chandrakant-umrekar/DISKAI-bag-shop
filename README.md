@@ -14,7 +14,7 @@
 
 <h2>Technologies Used</h2>
 <ul>
-    <li><strong>Frontend:</strong> React, Bootstrap, TailwindCSS</li>
+    <li><strong>Frontend:</strong> ejs, TailwindCSS</li>
     <li><strong>Backend:</strong> Node.js, Express.js</li>
     <li><strong>Database:</strong> MongoDB</li>
     <li><strong>Authentication:</strong> JSON Web Tokens (JWT)</li>
